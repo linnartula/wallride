@@ -1,0 +1,19 @@
+version: '3'
+
+volumes:
+  postgres_local_db_data:
+
+services:
+  db:
+    container_name: wallride_db
+    image: postgres:alpine
+    ports:
+#      - 5435:5432
+      - 5434:5432
+    volumes:
+      - postgres_local_db_data:/var/lib/postgresql/data
+#      - postgres_local_db_data:/var/lib/postgresql/result
+    environment:
+      - POSTGRES_DB=localdb
+      - POSTGRES_USER=localdev
+      - POSTGRES_PASSWORD=localdev
